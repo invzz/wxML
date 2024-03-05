@@ -1,0 +1,27 @@
+set (LIB_NAME eig_neuron)
+# Include the header files from the child directory
+
+find_package (Eigen3 3.3 REQUIRED NO_MODULE) 
+
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/inc
+    )
+# Source files
+set(SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/NN.cc )
+# Header files
+set(INC ${CMAKE_CURRENT_SOURCE_DIR}/inc/NN.hh )
+
+message(STATUS "Eigen3 include dir: ${EIGEN3_INCLUDE_DIR}")
+message(STATUS "Eigen3 version: ${EIGEN3_VERSION}")
+message(STATUS "INC: ${INC}")
+message(STATUS "SRC: ${SRC}")
+
+add_library(${LIB_NAME} ${INC} ${SRC} )
+target_include_directories(${LIB_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/inc )
+target_link_libraries(${LIB_NAME} PRIVATE Eigen3::Eigen )
+
+
+
+
+
+

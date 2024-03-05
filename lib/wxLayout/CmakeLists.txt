@@ -1,0 +1,34 @@
+set(LIB_NAME layout)
+set(COMPONENTS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/components )
+project(${LIB_NAME})
+
+add_definitions(-DRES_DIR="${RES_DIR}")
+
+# Find wxWidgets package
+find_package(wxWidgets REQUIRED COMPONENTS net core base)
+
+add_subdirectory(${COMPONENTS_DIR})
+
+# Include wxWidgets macros
+include(${wxWidgets_USE_FILE})
+
+# Include directories
+include_directories(${PROJECT_SOURCE_DIR}/inc)
+
+# Source files
+set(SRC  
+    ${PROJECT_SOURCE_DIR}/src/app.cc 
+)
+
+# Header files
+set(INC 
+    ${PROJECT_SOURCE_DIR}/inc/app.hh
+)
+
+# Executable 
+add_executable(${LIB_NAME} WIN32 ${SRC} ${INC}) 
+
+# Link wxWidgets
+target_link_libraries(${LIB_NAME} ${wxWidgets_LIBRARIES} mainframe)
+target_include_directories(${LIB_NAME} PUBLIC ${COMPONENTS_DIR})
+
