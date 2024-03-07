@@ -1,0 +1,116 @@
+\doxysection{neuron.\+hh}
+\hypertarget{neuron_8hh_source}{}\label{neuron_8hh_source}\index{/mnt/c/Users/andres.coronado/Documents/git/wxApp/lib/old/nn/neuron.hh@{/mnt/c/Users/andres.coronado/Documents/git/wxApp/lib/old/nn/neuron.hh}}
+\mbox{\hyperlink{neuron_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_H\_neuron}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_H\_neuron}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ std::vector<double>\ \mbox{\hyperlink{neuron_8hh_a6aa597ea7e4655b4292a8c83f9e4c51d}{input\_t}};}
+\DoxyCodeLine{00010\ \textcolor{keyword}{typedef}\ std::vector<double>\ \mbox{\hyperlink{neuron_8hh_abe9ec5bde119c191eab3aafa1ccfde5b}{target\_t}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classUniformRandomInt}{UniformRandomInt}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ std::random\_device\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_rd\{\};}
+\DoxyCodeLine{00015\ \ \ std::mt19937\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_gen\{\_rd()\};}
+\DoxyCodeLine{00016\ \ \ std::uniform\_int\_distribution<int>\ \_dist;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \mbox{\hyperlink{classUniformRandomInt_a30a240917866b7c41705aad3a12359ab}{UniformRandomInt}}()\ \{\ \mbox{\hyperlink{classUniformRandomInt_a0474c5c7ea7283c23a1c81f15e8f381c}{set}}(1,\ 100);\ \}}
+\DoxyCodeLine{00020\ \ \ \mbox{\hyperlink{classUniformRandomInt_a57b8a0cd326722912e7ef2eecdeabb58}{UniformRandomInt}}(\textcolor{keywordtype}{int}\ low,\ \textcolor{keywordtype}{int}\ high)\ \{\ \mbox{\hyperlink{classUniformRandomInt_a0474c5c7ea7283c23a1c81f15e8f381c}{set}}(low,\ high);\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUniformRandomInt_a0474c5c7ea7283c23a1c81f15e8f381c}{set}}(\textcolor{keywordtype}{int}\ low,\ \textcolor{keywordtype}{int}\ high)}
+\DoxyCodeLine{00023\ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ std::uniform\_int\_distribution<int>::param\_type\ param(low,\ high);}
+\DoxyCodeLine{00025\ \ \ \ \ \_dist.param(param);}
+\DoxyCodeLine{00026\ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classUniformRandomInt_a0ea44a9e569c7c87140de11ac3567cd2}{get}}()\ \{\ \textcolor{keywordflow}{return}\ \_dist(\_gen);\ \}}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classUniformRandomDouble}{UniformRandomDouble}}}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ std::random\_device\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_rd\{\};}
+\DoxyCodeLine{00035\ \ \ std::mt19937\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_gen\{\_rd()\};}
+\DoxyCodeLine{00036\ \ \ std::uniform\_real\_distribution<double>\ \_dist;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{classUniformRandomDouble_a5dfa6daa5645198bd6592fd12c84422a}{UniformRandomDouble}}()\ \{\ \mbox{\hyperlink{classUniformRandomDouble_a7ef182edb17aa5bd8d183aef25f07017}{set}}(0.0,\ 1.0);\ \}}
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{classUniformRandomDouble_a5c622e8cc5c256c447eefca001fb667f}{UniformRandomDouble}}(\textcolor{keywordtype}{double}\ low,\ \textcolor{keywordtype}{double}\ high)\ \{\ \mbox{\hyperlink{classUniformRandomDouble_a7ef182edb17aa5bd8d183aef25f07017}{set}}(low,\ high);\ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUniformRandomDouble_a7ef182edb17aa5bd8d183aef25f07017}{set}}(\textcolor{keywordtype}{double}\ low,\ \textcolor{keywordtype}{double}\ high)}
+\DoxyCodeLine{00043\ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ std::uniform\_real\_distribution<double>::param\_type\ param(low,\ high);}
+\DoxyCodeLine{00045\ \ \ \ \ \_dist.param(param);}
+\DoxyCodeLine{00046\ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classUniformRandomDouble_ac006555f6280d6c53ddd861d3038eac7}{get}}()\ \{\ \textcolor{keywordflow}{return}\ \_dist(\_gen);\ \}}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classneuron}{neuron}};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{typedef}\ std::vector<neuron>\ \mbox{\hyperlink{neuron_8hh_ae53f70bfe2d0d049dce9078f0dab8b8a}{Layer}};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structconnection}{connection}}}
+\DoxyCodeLine{00056\ \{}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structconnection_a7e80b3112abd40fb20d84296ee6a2374}{weight}};}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structconnection_aa59f66efbd38e974790904f6112ce931}{deltaWeight}};}
+\DoxyCodeLine{00059\ \};\ \textcolor{comment}{//\ struct\ connection}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classneuron}{neuron}}}
+\DoxyCodeLine{00062\ \{}
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00064\ \ \ \mbox{\hyperlink{classneuron_a693589ad7452906e21f063b799e2ef33}{neuron}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ numOutputs,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ myIndex);}
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \mbox{\hyperlink{classneuron_a19815788c86f308a2b318bbc74b10d5e}{getOutputValue}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ outputVal;\ \}}
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classneuron_ad277291276f7d581974d900f4f2e75a1}{setOutput}}(\textcolor{keywordtype}{double}\ val)\ \{\ outputVal\ =\ val;\ \}}
+\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classneuron_a6c37f02de5e79b24616917391351df49}{feedForward}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{neuron_8hh_ae53f70bfe2d0d049dce9078f0dab8b8a}{Layer}}\ \&prevLayer);}
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classneuron_a4a0b8ab52a86b3a4ae8be25bb0290604}{calcOutputGradients}}(\textcolor{keywordtype}{double}\ targetVal);}
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classneuron_af242736fd195fd75f8a92da0d8cd240a}{calcHiddenGradients}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{neuron_8hh_ae53f70bfe2d0d049dce9078f0dab8b8a}{Layer}}\ \&nextLayer);}
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classneuron_a44212e929146073db190db5a0c2e235d}{updateInputWeights}}(\mbox{\hyperlink{neuron_8hh_ae53f70bfe2d0d049dce9078f0dab8b8a}{Layer}}\ \&prevLayer);}
+\DoxyCodeLine{00071\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classneuron_a410d88175c46bff188020f407b8d6459}{eta}};\ \ \ \textcolor{comment}{//\ [0.0..1.0]\ overall\ net\ training\ rate}}
+\DoxyCodeLine{00072\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classneuron_a942a6a5070781431c8175219631f7cdd}{alpha}};\ \textcolor{comment}{//\ [0.0..n]\ multiplier\ of\ last\ weight\ change\ (momentum)}}
+\DoxyCodeLine{00073\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classneuron_aaeef728d877b1ef2a2b66c1156d3c03f}{randomWeight}}()}
+\DoxyCodeLine{00074\ \ \ \{\ \textcolor{comment}{//\ Create\ a\ random\ number\ engine}}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{static}\ std::mt19937\_64\ generator(std::random\_device\{\}());}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ Define\ a\ distribution\ for\ the\ weights\ (e.g.,\ uniform\ distribution\ between\ -\/1\ and\ 1)}}
+\DoxyCodeLine{00078\ \ \ \ \ std::uniform\_real\_distribution<double>\ distribution(-\/1.0,\ 1.0);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ Generate\ a\ random\ weight}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{return}\ distribution(generator);}
+\DoxyCodeLine{00082\ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00085\ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ outputVal;}
+\DoxyCodeLine{00086\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ Id;}
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gradient;}
+\DoxyCodeLine{00088\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ transferFunction(\textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{00089\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ transferFunctionDerivative(\textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sumDOW(\textcolor{keyword}{const}\ \mbox{\hyperlink{neuron_8hh_ae53f70bfe2d0d049dce9078f0dab8b8a}{Layer}}\ \&nextLayer)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00091\ \ \ std::vector<connection>\ outputWeights;}
+\DoxyCodeLine{00092\ \};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classnet}{net}}}
+\DoxyCodeLine{00095\ \{}
+\DoxyCodeLine{00096\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00097\ \ \ \mbox{\hyperlink{classnet_a6a2e3763870dab63bb1f45d625d9a641}{net}}(\textcolor{keyword}{const}\ std::vector<unsigned\ int>\ \&topology);}
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classnet_a8d4c01abfc076cfbe2443db45449bd89}{feedForward}}(\textcolor{keyword}{const}\ std::vector<double>\ \&inputVals);}
+\DoxyCodeLine{00099\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classnet_a83139262cd8afc4fd50515b1ad93a736}{backProp}}(\textcolor{keyword}{const}\ std::vector<double>\ \&targetVals);}
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classnet_a42cd81d3dec28782abf6d85206d31210}{getResults}}(std::vector<double>\ \&resultVals)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classnet_a6d71876a3b5bad967e1ce894ca1b7dfc}{setEta}}(\textcolor{keywordtype}{double}\ value);}
+\DoxyCodeLine{00102\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classnet_a30920ce1f678964f0dfc774111e10dd7}{setAlpha}}(\textcolor{keywordtype}{double}\ value);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00105\ \ \ std::vector<Layer>\ layers;}
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ \ \ error\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00107\ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ \ \ recentAverageError\ \ \ \ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00108\ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ \ \ recentAverageSmoothingFactor\ =\ 0;}
+\DoxyCodeLine{00109\ \};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

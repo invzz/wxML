@@ -7,9 +7,9 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/inc
     )
 # Source files
-set(SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/NN.cc )
+set(SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/NN.cc ${CMAKE_CURRENT_SOURCE_DIR}/src/activation.cc)
 # Header files
-set(INC ${CMAKE_CURRENT_SOURCE_DIR}/inc/NN.hh )
+set(INC ${CMAKE_CURRENT_SOURCE_DIR}/inc/NN.hh ${CMAKE_CURRENT_SOURCE_DIR}/inc/activation.hh )
 
 message(STATUS "Eigen3 include dir: ${EIGEN3_INCLUDE_DIR}")
 message(STATUS "Eigen3 version: ${EIGEN3_VERSION}")

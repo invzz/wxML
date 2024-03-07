@@ -1,0 +1,36 @@
+\doxysection{activation.\+hh}
+\hypertarget{activation_8hh_source}{}\label{activation_8hh_source}\index{/mnt/c/Users/andres.coronado/Documents/git/wxApp/lib/nn\_eigen/inc/activation.hh@{/mnt/c/Users/andres.coronado/Documents/git/wxApp/lib/nn\_eigen/inc/activation.hh}}
+\mbox{\hyperlink{activation_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <Eigen/Dense>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{using\ namespace\ }Eigen;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classActivationFunction}{ActivationFunction}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{virtual}\ VectorXd\ \mbox{\hyperlink{classActivationFunction_a1d6f7f4cfe61e3d057de380e379e13dc}{activate}}(\textcolor{keyword}{const}\ VectorXd\ \&x)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{virtual}\ VectorXd\ \mbox{\hyperlink{classActivationFunction_a956c45421ed29a4e872b163124c9f2dd}{derivative}}(\textcolor{keyword}{const}\ VectorXd\ \&x)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classActivationFunction_a09ce28c4d8ab4a220e911b88911f5888}{\string~ActivationFunction}}()\ \{\}}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSigmoidActivation}{SigmoidActivation}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classActivationFunction}{ActivationFunction}}}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00052\ \ \ VectorXd\ \mbox{\hyperlink{classSigmoidActivation_a41ad34864d06a19bb762bf1409599fd4}{activate}}(\textcolor{keyword}{const}\ VectorXd\ \&x)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ VectorXd\ \mbox{\hyperlink{classSigmoidActivation_a73fcfe8957a8da6be84d79f17ad13902}{derivative}}(\textcolor{keyword}{const}\ VectorXd\ \&x)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00060\ \};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classReLUActivation}{ReLUActivation}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classActivationFunction}{ActivationFunction}}}
+\DoxyCodeLine{00066\ \{}
+\DoxyCodeLine{00067\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00073\ \ \ VectorXd\ \mbox{\hyperlink{classReLUActivation_a916405cd1ee7369ae0e4e33cc19585a7}{activate}}(\textcolor{keyword}{const}\ VectorXd\ \&x)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \ \ VectorXd\ \mbox{\hyperlink{classReLUActivation_a6a15458dffcb9c83ba11449fe0da4715}{derivative}}(\textcolor{keyword}{const}\ VectorXd\ \&x)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00081\ \};}
+
+\end{DoxyCode}

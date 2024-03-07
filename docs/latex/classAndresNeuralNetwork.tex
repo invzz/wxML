@@ -1,0 +1,223 @@
+\doxysection{Andres\+Neural\+Network Class Reference}
+\hypertarget{classAndresNeuralNetwork}{}\label{classAndresNeuralNetwork}\index{AndresNeuralNetwork@{AndresNeuralNetwork}}
+
+
+The \doxylink{classAndresNeuralNetwork}{Andres\+Neural\+Network} class represents a neural network.  
+
+
+
+
+{\ttfamily \#include $<$NN.\+hh$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAndresNeuralNetwork_a10b0e904c5321fd1ef38cf8df0890e2c}{Andres\+Neural\+Network}} (const vector$<$ int $>$ \&topology, double learning\+\_\+rate, double momentum, \mbox{\hyperlink{classActivationFunction}{Activation\+Function}} \texorpdfstring{$\ast$}{*}activation\+\_\+function)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAndresNeuralNetwork_a911e592528482d3a80b6a3b7c9d2cb86}{backpropagation}} (const Vector\+Xd \&target)
+\begin{DoxyCompactList}\small\item\em Perform backpropagation in the neural network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAndresNeuralNetwork_a060ccf2916b573030894f89e6ce815a1}{forward\+Propagation}} (const Vector\+Xd \&input, std\+::function$<$ void(string)$>$ log=nullptr)
+\begin{DoxyCompactList}\small\item\em Perform forward propagation in the neural network. \end{DoxyCompactList}\item 
+Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classAndresNeuralNetwork_a73579061c0f80b0d19ba77f703e25e1f}{get\+Results}} (std\+::function$<$ void(string)$>$ log=nullptr) const
+\begin{DoxyCompactList}\small\item\em Get the results of the neural network. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAndresNeuralNetwork_adbabc8815588f95a6fecb6f493e45855}{load\+Weights}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Load weights from a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAndresNeuralNetwork_abf08ac3d4b569b92393f8d4c60b9dc0a}{save\+Weights}} (const std\+::string \&filename) const
+\begin{DoxyCompactList}\small\item\em Save weights to a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAndresNeuralNetwork_a844e9ba9e6aecdebdf9d05e080fdbd24}{set\+Eta}} (double eta)
+\begin{DoxyCompactList}\small\item\em Set the learning rate of the neural network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAndresNeuralNetwork_ac1e4045866733310c2fd9a795d66e732}{set\+Alpha}} (double alpha)
+\begin{DoxyCompactList}\small\item\em Set the momentum of the neural network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAndresNeuralNetwork_a4053f773c38cc323b444be25958e85ba}{set\+Topology}} (const vector$<$ int $>$ \&new\+Topology)
+\begin{DoxyCompactList}\small\item\em Set the topology of the neural network. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classAndresNeuralNetwork_ac860a472a79645efc94bc0575792cb09}{get\+Topology}} () const
+\begin{DoxyCompactList}\small\item\em Get the current topology of the neural network. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAndresNeuralNetwork_a3b49287bad737f674df2619fe12a279d}{\texorpdfstring{$\sim$}{\string~}\+Andres\+Neural\+Network}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classAndresNeuralNetwork}{Andres\+Neural\+Network} class represents a neural network. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classAndresNeuralNetwork_a10b0e904c5321fd1ef38cf8df0890e2c}\label{classAndresNeuralNetwork_a10b0e904c5321fd1ef38cf8df0890e2c} 
+\index{AndresNeuralNetwork@{AndresNeuralNetwork}!AndresNeuralNetwork@{AndresNeuralNetwork}}
+\index{AndresNeuralNetwork@{AndresNeuralNetwork}!AndresNeuralNetwork@{AndresNeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{AndresNeuralNetwork()}{AndresNeuralNetwork()}}
+{\footnotesize\ttfamily Andres\+Neural\+Network\+::\+Andres\+Neural\+Network (\begin{DoxyParamCaption}\item[{const vector$<$ int $>$ \&}]{topology,  }\item[{double}]{learning\+\_\+rate,  }\item[{double}]{momentum,  }\item[{\mbox{\hyperlink{classActivationFunction}{Activation\+Function}} \texorpdfstring{$\ast$}{*}}]{activation\+\_\+function }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em topology} & Topology of the neural network. \\
+\hline
+{\em learning\+\_\+rate} & Learning rate of the neural network. \\
+\hline
+{\em momentum} & Momentum of the neural network. \\
+\hline
+{\em activation\+\_\+function} & Activation function of the neural network. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classAndresNeuralNetwork_a3b49287bad737f674df2619fe12a279d}\label{classAndresNeuralNetwork_a3b49287bad737f674df2619fe12a279d} 
+\index{AndresNeuralNetwork@{AndresNeuralNetwork}!````~AndresNeuralNetwork@{\texorpdfstring{$\sim$}{\string~}AndresNeuralNetwork}}
+\index{````~AndresNeuralNetwork@{\texorpdfstring{$\sim$}{\string~}AndresNeuralNetwork}!AndresNeuralNetwork@{AndresNeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}AndresNeuralNetwork()}{\string~AndresNeuralNetwork()}}
+{\footnotesize\ttfamily Andres\+Neural\+Network\+::\texorpdfstring{$\sim$}{\string~}\+Andres\+Neural\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classAndresNeuralNetwork_a911e592528482d3a80b6a3b7c9d2cb86}\label{classAndresNeuralNetwork_a911e592528482d3a80b6a3b7c9d2cb86} 
+\index{AndresNeuralNetwork@{AndresNeuralNetwork}!backpropagation@{backpropagation}}
+\index{backpropagation@{backpropagation}!AndresNeuralNetwork@{AndresNeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{backpropagation()}{backpropagation()}}
+{\footnotesize\ttfamily void Andres\+Neural\+Network\+::backpropagation (\begin{DoxyParamCaption}\item[{const Vector\+Xd \&}]{target }\end{DoxyParamCaption})}
+
+
+
+Perform backpropagation in the neural network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & Target vector for backpropagation. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classAndresNeuralNetwork_a060ccf2916b573030894f89e6ce815a1}\label{classAndresNeuralNetwork_a060ccf2916b573030894f89e6ce815a1} 
+\index{AndresNeuralNetwork@{AndresNeuralNetwork}!forwardPropagation@{forwardPropagation}}
+\index{forwardPropagation@{forwardPropagation}!AndresNeuralNetwork@{AndresNeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{forwardPropagation()}{forwardPropagation()}}
+{\footnotesize\ttfamily void Andres\+Neural\+Network\+::forward\+Propagation (\begin{DoxyParamCaption}\item[{const Vector\+Xd \&}]{input,  }\item[{std\+::function$<$ void(string)$>$}]{log = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Perform forward propagation in the neural network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Input vector. \\
+\hline
+{\em log} & Optional logging function. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classAndresNeuralNetwork_a73579061c0f80b0d19ba77f703e25e1f}\label{classAndresNeuralNetwork_a73579061c0f80b0d19ba77f703e25e1f} 
+\index{AndresNeuralNetwork@{AndresNeuralNetwork}!getResults@{getResults}}
+\index{getResults@{getResults}!AndresNeuralNetwork@{AndresNeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{getResults()}{getResults()}}
+{\footnotesize\ttfamily Vector\+Xd Andres\+Neural\+Network\+::get\+Results (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(string)$>$}]{log = {\ttfamily nullptr} }\end{DoxyParamCaption}) const}
+
+
+
+Get the results of the neural network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log} & Optional logging function. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of results. 
+\end{DoxyReturn}
+\Hypertarget{classAndresNeuralNetwork_ac860a472a79645efc94bc0575792cb09}\label{classAndresNeuralNetwork_ac860a472a79645efc94bc0575792cb09} 
+\index{AndresNeuralNetwork@{AndresNeuralNetwork}!getTopology@{getTopology}}
+\index{getTopology@{getTopology}!AndresNeuralNetwork@{AndresNeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{getTopology()}{getTopology()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ Andres\+Neural\+Network\+::get\+Topology (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the current topology of the neural network. 
+
+\begin{DoxyReturn}{Returns}
+Vector representing the topology. 
+\end{DoxyReturn}
+\Hypertarget{classAndresNeuralNetwork_adbabc8815588f95a6fecb6f493e45855}\label{classAndresNeuralNetwork_adbabc8815588f95a6fecb6f493e45855} 
+\index{AndresNeuralNetwork@{AndresNeuralNetwork}!loadWeights@{loadWeights}}
+\index{loadWeights@{loadWeights}!AndresNeuralNetwork@{AndresNeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{loadWeights()}{loadWeights()}}
+{\footnotesize\ttfamily bool Andres\+Neural\+Network\+::load\+Weights (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Load weights from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of the file to load weights from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if weights are successfully loaded, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classAndresNeuralNetwork_abf08ac3d4b569b92393f8d4c60b9dc0a}\label{classAndresNeuralNetwork_abf08ac3d4b569b92393f8d4c60b9dc0a} 
+\index{AndresNeuralNetwork@{AndresNeuralNetwork}!saveWeights@{saveWeights}}
+\index{saveWeights@{saveWeights}!AndresNeuralNetwork@{AndresNeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{saveWeights()}{saveWeights()}}
+{\footnotesize\ttfamily void Andres\+Neural\+Network\+::save\+Weights (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption}) const}
+
+
+
+Save weights to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of the file to save weights to. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classAndresNeuralNetwork_ac1e4045866733310c2fd9a795d66e732}\label{classAndresNeuralNetwork_ac1e4045866733310c2fd9a795d66e732} 
+\index{AndresNeuralNetwork@{AndresNeuralNetwork}!setAlpha@{setAlpha}}
+\index{setAlpha@{setAlpha}!AndresNeuralNetwork@{AndresNeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{setAlpha()}{setAlpha()}}
+{\footnotesize\ttfamily void Andres\+Neural\+Network\+::set\+Alpha (\begin{DoxyParamCaption}\item[{double}]{alpha }\end{DoxyParamCaption})}
+
+
+
+Set the momentum of the neural network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alpha} & Momentum value. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classAndresNeuralNetwork_a844e9ba9e6aecdebdf9d05e080fdbd24}\label{classAndresNeuralNetwork_a844e9ba9e6aecdebdf9d05e080fdbd24} 
+\index{AndresNeuralNetwork@{AndresNeuralNetwork}!setEta@{setEta}}
+\index{setEta@{setEta}!AndresNeuralNetwork@{AndresNeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{setEta()}{setEta()}}
+{\footnotesize\ttfamily void Andres\+Neural\+Network\+::set\+Eta (\begin{DoxyParamCaption}\item[{double}]{eta }\end{DoxyParamCaption})}
+
+
+
+Set the learning rate of the neural network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em eta} & Learning rate value. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classAndresNeuralNetwork_a4053f773c38cc323b444be25958e85ba}\label{classAndresNeuralNetwork_a4053f773c38cc323b444be25958e85ba} 
+\index{AndresNeuralNetwork@{AndresNeuralNetwork}!setTopology@{setTopology}}
+\index{setTopology@{setTopology}!AndresNeuralNetwork@{AndresNeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{setTopology()}{setTopology()}}
+{\footnotesize\ttfamily void Andres\+Neural\+Network\+::set\+Topology (\begin{DoxyParamCaption}\item[{const vector$<$ int $>$ \&}]{new\+Topology }\end{DoxyParamCaption})}
+
+
+
+Set the topology of the neural network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Topology} & New topology to set. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/andres.\+coronado/\+Documents/git/wx\+App/lib/nn\+\_\+eigen/inc/\mbox{\hyperlink{NN_8hh}{NN.\+hh}}\item 
+/mnt/c/\+Users/andres.\+coronado/\+Documents/git/wx\+App/lib/nn\+\_\+eigen/src/\mbox{\hyperlink{NN_8cc}{NN.\+cc}}\end{DoxyCompactItemize}

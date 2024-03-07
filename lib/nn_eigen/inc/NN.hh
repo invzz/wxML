@@ -1,141 +1,117 @@
+/**
+ * @file NN.hh
+ * @author Andres Coronado (andres.coronado@bss.group)
+ * @brief Header of neural network
+ * @version 0.1
+ * @date 2024-03-07
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #ifndef NN_H
 #define NN_H
 
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <Eigen/Dense>
+#include "activation.hh"
+
+#define ROW_SEPARATOR      "\n"
+#define MATRIX_SEPARATOR   "END-MATRIX"
+#define TOPOLOGY_SEPARATOR "TOPOLOGY"
+#define COLUMN_SEPARATOR   ","
 
 using namespace Eigen;
 using namespace std;
 
-// Base class for activation functions
-class ActivationFunction
-{
-  public:
-  virtual VectorXd activate(const VectorXd &x) const   = 0;
-  virtual VectorXd derivative(const VectorXd &x) const = 0;
-  virtual ~ActivationFunction() {}
-};
-
-// Sigmoid activation function
-class SigmoidActivation : public ActivationFunction
-{
-  public:
-  VectorXd activate(const VectorXd &x) const override { return 1.0 / (1.0 + (-x.array()).exp()); }
-
-  VectorXd derivative(const VectorXd &x) const override { return x.array() * (1.0 - x.array()); }
-};
-
-// ReLU activation function
-class ReLUActivation : public ActivationFunction
-{
-  public:
-  VectorXd activate(const VectorXd &x) const override { return x.array().max(0); }
-
-  VectorXd derivative(const VectorXd &x) const override { return (x.array() > 0).cast<double>(); }
-};
-
-class eig_nn
+/**
+ * @brief The AndresNeuralNetwork class represents a neural network.
+ */
+class AndresNeuralNetwork
 {
   private:
-  vector<int>         topology;
-  vector<MatrixXd>    weights;
-  vector<MatrixXd>    prev_weight_update; // Store previous weight update for momentum
-  vector<VectorXd>    biases;
-  vector<VectorXd>    activations;
-  vector<VectorXd>    deltas;
-  double              learning_rate;
-  double              momentum;
-  ActivationFunction *activation_function;
+  vector<int>         topology;            /**< Topology of the neural network. */
+  vector<MatrixXd>    weights;             /**< Weights of the neural network. */
+  vector<MatrixXd>    prev_weight_update;  /**< Previous weight update for momentum. */
+  vector<VectorXd>    biases;              /**< Biases of the neural network. */
+  vector<VectorXd>    activations;         /**< Activations of the neural network. */
+  vector<VectorXd>    deltas;              /**< Deltas of the neural network. */
+  double              learning_rate;       /**< Learning rate of the neural network. */
+  double              momentum;            /**< Momentum of the neural network. */
+  ActivationFunction *activation_function; /**< Activation function of the neural network. */
 
   public:
-  void setEta(double eta) { learning_rate = eta; }
-  void setAlpha(double alpha) { momentum = alpha; }
+  /**
+   * @brief Constructor.
+   * @param topology Topology of the neural network.
+   * @param learning_rate Learning rate of the neural network.
+   * @param momentum Momentum of the neural network.
+   * @param activation_function Activation function of the neural network.
+   */
+  AndresNeuralNetwork(const vector<int> &topology, double learning_rate, double momentum, ActivationFunction *activation_function);
 
-  eig_nn(const vector<int> &topology, double learning_rate, double momentum, ActivationFunction *activation_function) : topology(topology), learning_rate(learning_rate), momentum(momentum), activation_function(activation_function)
-  {
-    // Initialize weights and biases randomly
-    for(int i = 0; i < topology.size() - 1; ++i)
-      {
-        weights.push_back(MatrixXd::Random(topology[i + 1], topology[i]));
-        prev_weight_update.push_back(MatrixXd::Zero(topology[i + 1], topology[i])); // Initialize to zero for momentum
-        biases.push_back(VectorXd::Random(topology[i + 1]));
-      }
-  }
+  /**
+   * @brief Perform backpropagation in the neural network.
+   * @param target Target vector for backpropagation.
+   */
+  void backpropagation(const VectorXd &target);
 
-  Eigen::VectorXd getResults(std::function<void(string)> log = nullptr) const
-  {
-    // Check if activations contain data and the size is greater than 1 (output layer exists)
-    if(activations.size() > 1)
-      {
-        if(log != nullptr)
-          {
-            IOFormat     CleanFmt(4, 0, ", ", "\n", "[", "]");
-            stringstream message;
+  /**
+   * @brief Perform forward propagation in the neural network.
+   * @param input Input vector.
+   * @param log Optional logging function.
+   */
+  void forwardPropagation(const VectorXd &input, std::function<void(string)> log = nullptr);
 
-            message << "OUTPUT: " << endl;
-            message << activations.back().format(CleanFmt) << endl;
+  /**
+   * @brief Get the results of the neural network.
+   * @param log Optional logging function.
+   * @return Vector of results.
+   */
+  Eigen::VectorXd getResults(std::function<void(string)> log = nullptr) const;
 
-            log(message.str());
-          }
-        return activations.back();
-      }
-    else
-      {
-        // Handle error when activations are not computed
-        throw std::logic_error("Output layer activations not computed");
-      }
-  }
+  /**
+   * @brief Load weights from a file.
+   * @param filename Name of the file to load weights from.
+   * @return True if weights are successfully loaded, false otherwise.
+   */
+  bool loadWeights(const std::string &filename);
 
-  void forward_propagation(const VectorXd &input, std::function<void(string)> log = nullptr)
-  {
-    activations.clear();
-    activations.push_back(input);
+  /**
+   * @brief Save weights to a file.
+   * @param filename Name of the file to save weights to.
+   */
+  void saveWeights(const std::string &filename) const;
 
-    if(log != nullptr)
-      {
-        IOFormat     CleanFmt(4, 0, ", ", "\n", "[", "]");
-        stringstream message;
+  /**
+   * @brief Set the learning rate of the neural network.
+   * @param eta Learning rate value.
+   */
+  void setEta(double eta);
 
-        message << "Input: " << endl;
-        message << input.format(CleanFmt) << endl;
+  /**
+   * @brief Set the momentum of the neural network.
+   * @param alpha Momentum value.
+   */
+  void setAlpha(double alpha);
 
-        log(message.str());
-      }
+  /**
+   * @brief Set the topology of the neural network.
+   * @param newTopology New topology to set.
+   */
+  void setTopology(const vector<int> &newTopology);
 
-    for(int i = 0; i < weights.size(); ++i)
-      {
-        VectorXd layer_output = weights[i] * activations.back() + biases[i];
-        activations.push_back(activation_function->activate(layer_output));
-      }
-  }
+  /**
+   * @brief Get the current topology of the neural network.
+   * @return Vector representing the topology.
+   */
+  std::vector<int> getTopology() const;
 
-  void backpropagation(const VectorXd &target)
-  {
-    deltas.clear();
-    VectorXd output_error = activations.back() - target;
-    VectorXd output_delta = output_error.array() * activation_function->derivative(activations.back()).array();
-    deltas.push_back(output_delta);
-
-    for(int i = weights.size() - 1; i > 0; --i)
-      {
-        VectorXd error = weights[i].transpose() * deltas.back();
-        VectorXd delta = error.array() * activation_function->derivative(activations[i]).array();
-        deltas.push_back(delta);
-      }
-
-    reverse(deltas.begin(), deltas.end());
-
-    for(int i = 0; i < weights.size(); ++i)
-      {
-        MatrixXd weight_update = learning_rate * (deltas[i] * activations[i].transpose());
-        weights[i] -= weight_update + momentum * prev_weight_update[i]; // Add momentum term
-        biases[i] -= learning_rate * deltas[i];
-        prev_weight_update[i] = weight_update; // Store current weight update for momentum
-      }
-  }
-
-  ~eig_nn() {}
+  /**
+   * @brief Destructor.
+   */
+  ~AndresNeuralNetwork();
 };
 
 #endif /* NN_H */

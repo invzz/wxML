@@ -1,0 +1,90 @@
+\doxysection{csv\+List\+Control.\+hh}
+\hypertarget{csvListControl_8hh_source}{}\label{csvListControl_8hh_source}\index{/mnt/c/Users/andres.coronado/Documents/git/wxApp/lib/wxLayout/components/csvListControl.hh@{/mnt/c/Users/andres.coronado/Documents/git/wxApp/lib/wxLayout/components/csvListControl.hh}}
+\mbox{\hyperlink{csvListControl_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <wx/wx.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <wx/listctrl.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <rapidcsv.h>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVirtualListControl}{VirtualListControl}}\ :\ \textcolor{keyword}{public}\ wxListCtrl}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{classVirtualListControl_ae43697f717fe4634eeba5e95ef430eba}{VirtualListControl}}(wxWindow\ *parent,\ wxWindowID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ wxPoint\ \&pos,\ \textcolor{keyword}{const}\ wxSize\ \&size,\ std::string\ csv\_path)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ :\ wxListCtrl(parent,\ id,\ pos,\ size,\ wxLC\_REPORT\ |\ wxLC\_VIRTUAL\ |\ wxLC\_SINGLE\_SEL\ |\ wxLC\_HRULES)}
+\DoxyCodeLine{00035\ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ std::string\ fullPath\ =\ RES\_DIR\ \textcolor{stringliteral}{"{}/"{}}\ +\ csv\_path;}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classVirtualListControl_ae6e3bb5a3963ce3306e65278387c5d75}{doc}}.Load(fullPath);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{auto}\ headers\ =\ \mbox{\hyperlink{classVirtualListControl_ae6e3bb5a3963ce3306e65278387c5d75}{doc}}.GetColumnNames();}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ col\_id\ =\ 0;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ header\ :\ headers)}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ this-\/>AppendColumn(header);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ col\_id++;}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ this-\/>AppendColumn(\textcolor{stringliteral}{"{}Quality2"{}});}
+\DoxyCodeLine{00046\ \ \ \ \ this-\/>AppendColumn(\textcolor{stringliteral}{"{}Prediction"{}});}
+\DoxyCodeLine{00047\ \ \ \ \ this-\/>AppendColumn(\textcolor{stringliteral}{"{}Prediction2"{}});}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{classVirtualListControl_a1d742a50b43caf7faa0cc28f3254b385}{resetData}}();}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ col\_id;\ i++)}
+\DoxyCodeLine{00051\ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ this-\/>SetColumnWidth(i,\ wxLIST\_AUTOSIZE\_USEHEADER);}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ this-\/>Bind(wxEVT\_LIST\_COL\_CLICK,\ [\textcolor{keyword}{this}](wxListEvent\ \&event)\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \textcolor{keyword}{auto}\ selected\ =\ this-\/>GetFirstSelectedItem();}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \textcolor{keyword}{auto}\ selectedDesc\ =\ selected\ !=\ -\/1\ ?\ this-\/>\mbox{\hyperlink{classVirtualListControl_abe3db7c7fd2d238604bfd558a52e5240}{items}}[selected].id\ :\ 0;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (selected\ !=\ -\/1)}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ this-\/>SetItemState(selected,\ 0,\ wxLIST\_STATE\_SELECTED);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ this-\/>sortByColumn(event.GetColumn());}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (selected\ !=\ -\/1)}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ indexToSelect\ =\ std::find\_if(this-\/>\mbox{\hyperlink{classVirtualListControl_abe3db7c7fd2d238604bfd558a52e5240}{items}}.begin(),\ this-\/>items.end(),\ [selectedDesc](\textcolor{keyword}{auto}\ item)\ \{\ return\ item.id\ ==\ selectedDesc;\ \})\ -\/\ this-\/>\mbox{\hyperlink{classVirtualListControl_abe3db7c7fd2d238604bfd558a52e5240}{items}}.begin();}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ this-\/>SetItemState(indexToSelect,\ wxLIST\_STATE\_SELECTED,\ wxLIST\_STATE\_SELECTED);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ this-\/>EnsureVisible(indexToSelect);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ this-\/>sortAscending\ =\ !this-\/>sortAscending;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classVirtualListControl_a5672f5db726e368e0cca492bdbe411bd}{RefreshAfterUpdate}}();}
+\DoxyCodeLine{00071\ \ \ \ \ \});}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ this-\/>Bind(wxEVT\_LIST\_ITEM\_SELECTED,\ [\textcolor{keyword}{this}](wxListEvent\ \&event)\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \textcolor{keyword}{auto}\ selected\ =\ this-\/>GetFirstSelectedItem();}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (selected\ !=\ -\/1)}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ item\ =\ this-\/>\mbox{\hyperlink{classVirtualListControl_abe3db7c7fd2d238604bfd558a52e5240}{items}}[selected];}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \});}
+\DoxyCodeLine{00080\ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00085\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVirtualListControl_a5672f5db726e368e0cca492bdbe411bd}{RefreshAfterUpdate}}()}
+\DoxyCodeLine{00086\ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ this-\/>SetItemCount(\mbox{\hyperlink{classVirtualListControl_abe3db7c7fd2d238604bfd558a52e5240}{items}}.size());}
+\DoxyCodeLine{00088\ \ \ \ \ this-\/>Refresh();}
+\DoxyCodeLine{00089\ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ std::vector<T>\ \mbox{\hyperlink{classVirtualListControl_abe3db7c7fd2d238604bfd558a52e5240}{items}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00092\ \ \ rapidcsv::Document\ \mbox{\hyperlink{classVirtualListControl_ae6e3bb5a3963ce3306e65278387c5d75}{doc}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ }
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVirtualListControl_a1d742a50b43caf7faa0cc28f3254b385}{resetData}}();}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{bool}\ sortAscending\ =\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00109\ \ \ \textcolor{keyword}{virtual}\ wxString\ OnGetItemText(\textcolor{keywordtype}{long}\ index,\ \textcolor{keywordtype}{long}\ column)\ \textcolor{keyword}{const}\ wxOVERRIDE;}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00116\ \ \ \textcolor{keywordtype}{long}\ GetFirstSelectedItem();}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00123\ \ \ \textcolor{keywordtype}{void}\ sortByColumn(\textcolor{keywordtype}{int}\ column);}
+\DoxyCodeLine{00124\ \};}
+
+\end{DoxyCode}

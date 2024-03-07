@@ -1,0 +1,146 @@
+\doxysection{Virtual\+List\+Control\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classVirtualListControl}{}\label{classVirtualListControl}\index{VirtualListControl$<$ T $>$@{VirtualListControl$<$ T $>$}}
+
+
+A template class for a virtual list control that displays data from a CSV file.  
+
+
+
+
+{\ttfamily \#include $<$csv\+List\+Control.\+hh$>$}
+
+Inheritance diagram for Virtual\+List\+Control\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classVirtualListControl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVirtualListControl_ae43697f717fe4634eeba5e95ef430eba}{Virtual\+List\+Control}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, wx\+Window\+ID id, const wx\+Point \&pos, const wx\+Size \&size, std\+::string csv\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classVirtualListControl}{Virtual\+List\+Control} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVirtualListControl_a5672f5db726e368e0cca492bdbe411bd}{Refresh\+After\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Refreshes the list control after updating the data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVirtualListControl_a1d742a50b43caf7faa0cc28f3254b385}{reset\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Resets the data in the list control. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVirtualListControl_a87b49184f3bb2aadd89e5da841a8780c}{reset\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Template specialization for resetting the data in the virtual list control. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ T $>$ \mbox{\hyperlink{classVirtualListControl_abe3db7c7fd2d238604bfd558a52e5240}{items}}
+\begin{DoxyCompactList}\small\item\em The items to be displayed in the list control. \end{DoxyCompactList}\item 
+rapidcsv\+::\+Document \mbox{\hyperlink{classVirtualListControl_ae6e3bb5a3963ce3306e65278387c5d75}{doc}}
+\begin{DoxyCompactList}\small\item\em The CSV document. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Virtual\+List\+Control$<$ T $>$}
+A template class for a virtual list control that displays data from a CSV file. 
+
+This class inherits from wx\+List\+Ctrl and provides functionality to display and manipulate data from a CSV file in a virtual list control.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of data to be displayed in the list control. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVirtualListControl_ae43697f717fe4634eeba5e95ef430eba}\label{classVirtualListControl_ae43697f717fe4634eeba5e95ef430eba} 
+\index{VirtualListControl$<$ T $>$@{VirtualListControl$<$ T $>$}!VirtualListControl@{VirtualListControl}}
+\index{VirtualListControl@{VirtualListControl}!VirtualListControl$<$ T $>$@{VirtualListControl$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{VirtualListControl()}{VirtualListControl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classVirtualListControl}{Virtual\+List\+Control}}$<$ T $>$\mbox{\hyperlink{classVirtualListControl}{\+::\+Virtual\+List\+Control}} (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent,  }\item[{wx\+Window\+ID}]{id,  }\item[{const wx\+Point \&}]{pos,  }\item[{const wx\+Size \&}]{size,  }\item[{std\+::string}]{csv\+\_\+path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{classVirtualListControl}{Virtual\+List\+Control} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent window. \\
+\hline
+{\em id} & The window ID. \\
+\hline
+{\em pos} & The position of the control. \\
+\hline
+{\em size} & The size of the control. \\
+\hline
+{\em csv\+\_\+path} & The path to the CSV file. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVirtualListControl_a5672f5db726e368e0cca492bdbe411bd}\label{classVirtualListControl_a5672f5db726e368e0cca492bdbe411bd} 
+\index{VirtualListControl$<$ T $>$@{VirtualListControl$<$ T $>$}!RefreshAfterUpdate@{RefreshAfterUpdate}}
+\index{RefreshAfterUpdate@{RefreshAfterUpdate}!VirtualListControl$<$ T $>$@{VirtualListControl$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{RefreshAfterUpdate()}{RefreshAfterUpdate()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classVirtualListControl}{Virtual\+List\+Control}}$<$ T $>$\+::\+Refresh\+After\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Refreshes the list control after updating the data. 
+
+\Hypertarget{classVirtualListControl_a87b49184f3bb2aadd89e5da841a8780c}\label{classVirtualListControl_a87b49184f3bb2aadd89e5da841a8780c} 
+\index{VirtualListControl$<$ T $>$@{VirtualListControl$<$ T $>$}!resetData@{resetData}}
+\index{resetData@{resetData}!VirtualListControl$<$ T $>$@{VirtualListControl$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{resetData()}{resetData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{classVirtualListControl}{Virtual\+List\+Control}}$<$ \mbox{\hyperlink{structDataModel}{Data\+Model}} $>$\+::reset\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Template specialization for resetting the data in the virtual list control. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Apple\+Data} & The type of data stored in the list control. \\
+\hline
+\end{DoxyTemplParams}
+\Hypertarget{classVirtualListControl_a1d742a50b43caf7faa0cc28f3254b385}\label{classVirtualListControl_a1d742a50b43caf7faa0cc28f3254b385} 
+\index{VirtualListControl$<$ T $>$@{VirtualListControl$<$ T $>$}!resetData@{resetData}}
+\index{resetData@{resetData}!VirtualListControl$<$ T $>$@{VirtualListControl$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{resetData()}{resetData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classVirtualListControl}{Virtual\+List\+Control}}$<$ T $>$\+::reset\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the data in the list control. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classVirtualListControl_ae6e3bb5a3963ce3306e65278387c5d75}\label{classVirtualListControl_ae6e3bb5a3963ce3306e65278387c5d75} 
+\index{VirtualListControl$<$ T $>$@{VirtualListControl$<$ T $>$}!doc@{doc}}
+\index{doc@{doc}!VirtualListControl$<$ T $>$@{VirtualListControl$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{doc}{doc}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+rapidcsv\+::\+Document \mbox{\hyperlink{classVirtualListControl}{Virtual\+List\+Control}}$<$ T $>$\+::doc}
+
+
+
+The CSV document. 
+
+\Hypertarget{classVirtualListControl_abe3db7c7fd2d238604bfd558a52e5240}\label{classVirtualListControl_abe3db7c7fd2d238604bfd558a52e5240} 
+\index{VirtualListControl$<$ T $>$@{VirtualListControl$<$ T $>$}!items@{items}}
+\index{items@{items}!VirtualListControl$<$ T $>$@{VirtualListControl$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{items}{items}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$T$>$ \mbox{\hyperlink{classVirtualListControl}{Virtual\+List\+Control}}$<$ T $>$\+::items}
+
+
+
+The items to be displayed in the list control. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/andres.\+coronado/\+Documents/git/wx\+App/lib/wx\+Layout/components/\mbox{\hyperlink{csvListControl_8hh}{csv\+List\+Control.\+hh}}\end{DoxyCompactItemize}

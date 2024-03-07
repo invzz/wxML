@@ -1,9 +1,22 @@
-#include "csvListControl.hh"
-#include "appleData.hh"
 
-template <> wxString VirtualListControl<AppleData>::OnGetItemText(long index, long column) const
+/**
+ * @file appleListControl.cc
+ * @brief Implementation of the appleListControl class.
+ */
+
+#include "csvListControl.hh"
+#include "DataModel.hh"
+
+/**
+ * @brief Template specialization for getting the text of an item in the virtual list control.
+ * @tparam AppleData The type of data stored in the list control.
+ * @param index The index of the item.
+ * @param column The column index of the item.
+ * @return The text of the item at the specified index and column.
+ */
+template <> wxString VirtualListControl<DataModel>::OnGetItemText(long index, long column) const
 {
-  AppleData item = items[index];
+  DataModel item = items[index];
 
   int input_idx      = 0;
   int output_idx     = 0;
@@ -27,13 +40,25 @@ template <> wxString VirtualListControl<AppleData>::OnGetItemText(long index, lo
     }
   return "";
 }
-template <> long VirtualListControl<AppleData>::GetFirstSelectedItem()
+
+/**
+ * @brief Template specialization for getting the index of the first selected item in the virtual list control.
+ * @tparam AppleData The type of data stored in the list control.
+ * @return The index of the first selected item, or -1 if no item is selected.
+ */
+template <> long VirtualListControl<DataModel>::GetFirstSelectedItem()
 {
   long item = -1;
   item      = GetNextItem(item, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
   return item;
 }
-template <> void VirtualListControl<AppleData>::sortByColumn(int column)
+
+/**
+ * @brief Template specialization for sorting the items in the virtual list control by a specific column.
+ * @tparam AppleData The type of data stored in the list control.
+ * @param column The column index to sort by.
+ */
+template <> void VirtualListControl<DataModel>::sortByColumn(int column)
 {
   auto cmp = [](auto a, auto b, bool asc) { return asc ? a < b : a > b; };
   bool asc = this->sortAscending;
@@ -60,7 +85,12 @@ template <> void VirtualListControl<AppleData>::sortByColumn(int column)
       }
   });
 }
-template <> void VirtualListControl<AppleData>::resetData()
+
+/**
+ * @brief Template specialization for resetting the data in the virtual list control.
+ * @tparam AppleData The type of data stored in the list control.
+ */
+template <> void VirtualListControl<DataModel>::resetData()
 {
   items.clear();
   int rows = doc.GetRowCount();
@@ -73,7 +103,7 @@ template <> void VirtualListControl<AppleData>::resetData()
     {
       int current_col = 0;
 
-      AppleData item;
+      DataModel item;
 
       item.id = doc.GetCell<int>(current_col++, i);
 

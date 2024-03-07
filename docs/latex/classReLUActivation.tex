@@ -1,0 +1,85 @@
+\doxysection{Re\+LUActivation Class Reference}
+\hypertarget{classReLUActivation}{}\label{classReLUActivation}\index{ReLUActivation@{ReLUActivation}}
+
+
+Re\+LU activation function.  
+
+
+
+
+{\ttfamily \#include $<$activation.\+hh$>$}
+
+Inheritance diagram for Re\+LUActivation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classReLUActivation}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Vector\+Xd \mbox{\hyperlink{classReLUActivation_a916405cd1ee7369ae0e4e33cc19585a7}{activate}} (const Vector\+Xd \&x) const override
+\begin{DoxyCompactList}\small\item\em Activate function. \end{DoxyCompactList}\item 
+Vector\+Xd \mbox{\hyperlink{classReLUActivation_a6a15458dffcb9c83ba11449fe0da4715}{derivative}} (const Vector\+Xd \&x) const override
+\begin{DoxyCompactList}\small\item\em Calculate derivative of Re\+LU activation function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classActivationFunction}{Activation\+Function}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classActivationFunction_a09ce28c4d8ab4a220e911b88911f5888}{\texorpdfstring{$\sim$}{\string~}\+Activation\+Function}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Re\+LU activation function. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classReLUActivation_a916405cd1ee7369ae0e4e33cc19585a7}\label{classReLUActivation_a916405cd1ee7369ae0e4e33cc19585a7} 
+\index{ReLUActivation@{ReLUActivation}!activate@{activate}}
+\index{activate@{activate}!ReLUActivation@{ReLUActivation}}
+\doxysubsubsection{\texorpdfstring{activate()}{activate()}}
+{\footnotesize\ttfamily Vector\+Xd Re\+LUActivation\+::activate (\begin{DoxyParamCaption}\item[{const Vector\+Xd \&}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Activate function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector after activation. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classActivationFunction_a1d6f7f4cfe61e3d057de380e379e13dc}{Activation\+Function}}.
+
+\Hypertarget{classReLUActivation_a6a15458dffcb9c83ba11449fe0da4715}\label{classReLUActivation_a6a15458dffcb9c83ba11449fe0da4715} 
+\index{ReLUActivation@{ReLUActivation}!derivative@{derivative}}
+\index{derivative@{derivative}!ReLUActivation@{ReLUActivation}}
+\doxysubsubsection{\texorpdfstring{derivative()}{derivative()}}
+{\footnotesize\ttfamily Vector\+Xd Re\+LUActivation\+::derivative (\begin{DoxyParamCaption}\item[{const Vector\+Xd \&}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculate derivative of Re\+LU activation function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of derivatives. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classActivationFunction_a956c45421ed29a4e872b163124c9f2dd}{Activation\+Function}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/andres.\+coronado/\+Documents/git/wx\+App/lib/nn\+\_\+eigen/inc/\mbox{\hyperlink{activation_8hh}{activation.\+hh}}\item 
+/mnt/c/\+Users/andres.\+coronado/\+Documents/git/wx\+App/lib/nn\+\_\+eigen/src/\mbox{\hyperlink{activation_8cc}{activation.\+cc}}\end{DoxyCompactItemize}

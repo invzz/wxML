@@ -1,0 +1,110 @@
+\doxysection{neuron Class Reference}
+\hypertarget{classneuron}{}\label{classneuron}\index{neuron@{neuron}}
+
+
+{\ttfamily \#include $<$neuron.\+hh$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classneuron_a693589ad7452906e21f063b799e2ef33}{neuron}} (unsigned int num\+Outputs, unsigned int my\+Index)
+\item 
+double \mbox{\hyperlink{classneuron_a19815788c86f308a2b318bbc74b10d5e}{get\+Output\+Value}} () const
+\item 
+void \mbox{\hyperlink{classneuron_ad277291276f7d581974d900f4f2e75a1}{set\+Output}} (double val)
+\item 
+void \mbox{\hyperlink{classneuron_a6c37f02de5e79b24616917391351df49}{feed\+Forward}} (const \mbox{\hyperlink{neuron_8hh_ae53f70bfe2d0d049dce9078f0dab8b8a}{Layer}} \&prev\+Layer)
+\item 
+void \mbox{\hyperlink{classneuron_a4a0b8ab52a86b3a4ae8be25bb0290604}{calc\+Output\+Gradients}} (double target\+Val)
+\item 
+void \mbox{\hyperlink{classneuron_af242736fd195fd75f8a92da0d8cd240a}{calc\+Hidden\+Gradients}} (const \mbox{\hyperlink{neuron_8hh_ae53f70bfe2d0d049dce9078f0dab8b8a}{Layer}} \&next\+Layer)
+\item 
+void \mbox{\hyperlink{classneuron_a44212e929146073db190db5a0c2e235d}{update\+Input\+Weights}} (\mbox{\hyperlink{neuron_8hh_ae53f70bfe2d0d049dce9078f0dab8b8a}{Layer}} \&prev\+Layer)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{classneuron_aaeef728d877b1ef2a2b66c1156d3c03f}{random\+Weight}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{classneuron_a410d88175c46bff188020f407b8d6459}{eta}} = 0.\+15
+\item 
+static double \mbox{\hyperlink{classneuron_a942a6a5070781431c8175219631f7cdd}{alpha}} = 0.\+5
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classneuron_a693589ad7452906e21f063b799e2ef33}\label{classneuron_a693589ad7452906e21f063b799e2ef33} 
+\index{neuron@{neuron}!neuron@{neuron}}
+\index{neuron@{neuron}!neuron@{neuron}}
+\doxysubsubsection{\texorpdfstring{neuron()}{neuron()}}
+{\footnotesize\ttfamily neuron\+::neuron (\begin{DoxyParamCaption}\item[{unsigned int}]{num\+Outputs,  }\item[{unsigned int}]{my\+Index }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classneuron_af242736fd195fd75f8a92da0d8cd240a}\label{classneuron_af242736fd195fd75f8a92da0d8cd240a} 
+\index{neuron@{neuron}!calcHiddenGradients@{calcHiddenGradients}}
+\index{calcHiddenGradients@{calcHiddenGradients}!neuron@{neuron}}
+\doxysubsubsection{\texorpdfstring{calcHiddenGradients()}{calcHiddenGradients()}}
+{\footnotesize\ttfamily void neuron\+::calc\+Hidden\+Gradients (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{neuron_8hh_ae53f70bfe2d0d049dce9078f0dab8b8a}{Layer}} \&}]{next\+Layer }\end{DoxyParamCaption})}
+
+\Hypertarget{classneuron_a4a0b8ab52a86b3a4ae8be25bb0290604}\label{classneuron_a4a0b8ab52a86b3a4ae8be25bb0290604} 
+\index{neuron@{neuron}!calcOutputGradients@{calcOutputGradients}}
+\index{calcOutputGradients@{calcOutputGradients}!neuron@{neuron}}
+\doxysubsubsection{\texorpdfstring{calcOutputGradients()}{calcOutputGradients()}}
+{\footnotesize\ttfamily void neuron\+::calc\+Output\+Gradients (\begin{DoxyParamCaption}\item[{double}]{target\+Val }\end{DoxyParamCaption})}
+
+\Hypertarget{classneuron_a6c37f02de5e79b24616917391351df49}\label{classneuron_a6c37f02de5e79b24616917391351df49} 
+\index{neuron@{neuron}!feedForward@{feedForward}}
+\index{feedForward@{feedForward}!neuron@{neuron}}
+\doxysubsubsection{\texorpdfstring{feedForward()}{feedForward()}}
+{\footnotesize\ttfamily void neuron\+::feed\+Forward (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{neuron_8hh_ae53f70bfe2d0d049dce9078f0dab8b8a}{Layer}} \&}]{prev\+Layer }\end{DoxyParamCaption})}
+
+\Hypertarget{classneuron_a19815788c86f308a2b318bbc74b10d5e}\label{classneuron_a19815788c86f308a2b318bbc74b10d5e} 
+\index{neuron@{neuron}!getOutputValue@{getOutputValue}}
+\index{getOutputValue@{getOutputValue}!neuron@{neuron}}
+\doxysubsubsection{\texorpdfstring{getOutputValue()}{getOutputValue()}}
+{\footnotesize\ttfamily double neuron\+::get\+Output\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classneuron_aaeef728d877b1ef2a2b66c1156d3c03f}\label{classneuron_aaeef728d877b1ef2a2b66c1156d3c03f} 
+\index{neuron@{neuron}!randomWeight@{randomWeight}}
+\index{randomWeight@{randomWeight}!neuron@{neuron}}
+\doxysubsubsection{\texorpdfstring{randomWeight()}{randomWeight()}}
+{\footnotesize\ttfamily static double neuron\+::random\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classneuron_ad277291276f7d581974d900f4f2e75a1}\label{classneuron_ad277291276f7d581974d900f4f2e75a1} 
+\index{neuron@{neuron}!setOutput@{setOutput}}
+\index{setOutput@{setOutput}!neuron@{neuron}}
+\doxysubsubsection{\texorpdfstring{setOutput()}{setOutput()}}
+{\footnotesize\ttfamily void neuron\+::set\+Output (\begin{DoxyParamCaption}\item[{double}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classneuron_a44212e929146073db190db5a0c2e235d}\label{classneuron_a44212e929146073db190db5a0c2e235d} 
+\index{neuron@{neuron}!updateInputWeights@{updateInputWeights}}
+\index{updateInputWeights@{updateInputWeights}!neuron@{neuron}}
+\doxysubsubsection{\texorpdfstring{updateInputWeights()}{updateInputWeights()}}
+{\footnotesize\ttfamily void neuron\+::update\+Input\+Weights (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{neuron_8hh_ae53f70bfe2d0d049dce9078f0dab8b8a}{Layer}} \&}]{prev\+Layer }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classneuron_a942a6a5070781431c8175219631f7cdd}\label{classneuron_a942a6a5070781431c8175219631f7cdd} 
+\index{neuron@{neuron}!alpha@{alpha}}
+\index{alpha@{alpha}!neuron@{neuron}}
+\doxysubsubsection{\texorpdfstring{alpha}{alpha}}
+{\footnotesize\ttfamily double neuron\+::alpha = 0.\+5\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classneuron_a410d88175c46bff188020f407b8d6459}\label{classneuron_a410d88175c46bff188020f407b8d6459} 
+\index{neuron@{neuron}!eta@{eta}}
+\index{eta@{eta}!neuron@{neuron}}
+\doxysubsubsection{\texorpdfstring{eta}{eta}}
+{\footnotesize\ttfamily double neuron\+::eta = 0.\+15\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/andres.\+coronado/\+Documents/git/wx\+App/lib/old/nn/\mbox{\hyperlink{neuron_8hh}{neuron.\+hh}}\item 
+/mnt/c/\+Users/andres.\+coronado/\+Documents/git/wx\+App/lib/old/nn/\mbox{\hyperlink{neuron_8cc}{neuron.\+cc}}\end{DoxyCompactItemize}

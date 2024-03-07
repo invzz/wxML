@@ -1,0 +1,85 @@
+\doxysection{mainframe.\+hh}
+\hypertarget{mainframe_8hh_source}{}\label{mainframe_8hh_source}\index{/mnt/c/Users/andres.coronado/Documents/git/wxApp/lib/wxLayout/components/mainframe.hh@{/mnt/c/Users/andres.coronado/Documents/git/wxApp/lib/wxLayout/components/mainframe.hh}}
+\mbox{\hyperlink{mainframe_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ \_H\_DATA\_FRAME\_H\_}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ \_H\_DATA\_FRAME\_H\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ \_CRT\_SECURE\_NO\_WARNINGS}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <wx/wx.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <wx/spinctrl.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{DataModel_8hh}{DataModel.hh}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{csvListControl_8hh}{csvListControl.hh}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{NN_8hh}{NN.hh}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{classVirtualListControl}{VirtualListControl<DataModel>}}\ \mbox{\hyperlink{mainframe_8hh_ae29d0c498afedf1e3cf9f347e78fa49f}{AppleListControl}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMainFrame}{MainFrame}}\ :\ \textcolor{keyword}{public}\ wxFrame}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{classMainFrame_ac3cd882c222585f82e42f1b305c6ffb6}{MainFrame}}(\textcolor{keyword}{const}\ wxString\ \&title,\ \textcolor{keyword}{const}\ wxPoint\ \&pos,\ \textcolor{keyword}{const}\ wxSize\ \&size);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00048\ \ \ \mbox{\hyperlink{classMainFrame_a0cfd88ece4836e0ea5430bd55370bf11}{\string~MainFrame}}()}
+\DoxyCodeLine{00049\ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ wxLog::SetActiveTarget(nullptr);}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{delete}\ NN;}
+\DoxyCodeLine{00052\ \ \ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainFrame_a067457369a12dd78a5db0183d4ecb8e6}{Populate}}(\textcolor{keywordtype}{int}\ howManyItems);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ \ \ \mbox{\hyperlink{classAndresNeuralNetwork}{AndresNeuralNetwork}}\ *NN;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Epochs;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ExpectedAcc\ =\ 0.0;\ }
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LearningRate;\ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Momentum;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Threshold;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ batch\_size\ =\ 32;\ \ \ }
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ processing;\ \ \ \ }
+\DoxyCodeLine{00071\ \ \ std::atomic<bool>\ quitRequested;\ }
+\DoxyCodeLine{00072\ \ \ std::atomic<bool>\ stopRequested;\ }
+\DoxyCodeLine{00074\ \ \ std::thread\ workerThread;\ }
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{int}\ InputLayerSize;\ \ \ }
+\DoxyCodeLine{00077\ \ \ \textcolor{keywordtype}{int}\ HiddenLayerSize;\ \ }
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{int}\ HiddenLayerCount;\ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{int}\ OutputLayerSize;\ \ }
+\DoxyCodeLine{00081\ \ \ wxLog\ *logger;\ }
+\DoxyCodeLine{00083\ \ \ std::vector<VectorXd>\ input\_data;\ \ }
+\DoxyCodeLine{00084\ \ \ std::vector<VectorXd>\ output\_data;\ }
+\DoxyCodeLine{00086\ \ \ \mbox{\hyperlink{classActivationFunction}{ActivationFunction}}\ *activationFunction;\ }
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{void}\ OnClose(wxCloseEvent\ \&e);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{void}\ OnClose(wxCommandEvent\ \&e);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00107\ \ \ \textcolor{keywordtype}{void}\ OnOpen(wxCommandEvent\ \&e);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00114\ \ \ \textcolor{keywordtype}{void}\ OnSave(wxCommandEvent\ \&e);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00121\ \ \ \textcolor{keywordtype}{void}\ OnTrain(wxCommandEvent\ \&event);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00128\ \ \ \textcolor{keywordtype}{void}\ OnReset(wxCommandEvent\ \&event);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00133\ \ \ \textcolor{keywordtype}{void}\ OnUpdateNN();}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00140\ \ \ \textcolor{keywordtype}{void}\ Log(\textcolor{keyword}{const}\ std::string\ \&msg)\ \{\ logTxt-\/>AppendText(msg\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});\ \};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00149\ \ \ \textcolor{keywordtype}{void}\ train(\textcolor{keyword}{const}\ std::vector<VectorXd>\ \&inputs,\ \textcolor{keyword}{const}\ std::vector<VectorXd>\ \&targets,\ \textcolor{keywordtype}{int}\ batch\_size);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00156\ \ \ wxPanel\ *ParamPanel();}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00163\ \ \ wxPanel\ *DataPanel();}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ wxTextCtrl\ \ \ \ \ \ \ *logTxt;\ \ \ \ \ \ }
+\DoxyCodeLine{00166\ \ \ wxGauge\ \ \ \ \ \ \ \ \ \ *progressBar;\ }
+\DoxyCodeLine{00167\ \ \ \mbox{\hyperlink{classVirtualListControl}{AppleListControl}}\ *appleList;\ \ \ }
+\DoxyCodeLine{00169\ \ \ wxSpinCtrl\ *InputLayer;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00170\ \ \ wxSpinCtrl\ *HiddenLayer;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00171\ \ \ wxSpinCtrl\ *HiddenLayerNumber;\ }
+\DoxyCodeLine{00172\ \ \ wxSpinCtrl\ *OutputLayer;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00173\ \};}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

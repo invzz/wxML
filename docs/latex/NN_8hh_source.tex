@@ -1,0 +1,61 @@
+\doxysection{NN.\+hh}
+\hypertarget{NN_8hh_source}{}\label{NN_8hh_source}\index{/mnt/c/Users/andres.coronado/Documents/git/wxApp/lib/nn\_eigen/inc/NN.hh@{/mnt/c/Users/andres.coronado/Documents/git/wxApp/lib/nn\_eigen/inc/NN.hh}}
+\mbox{\hyperlink{NN_8hh}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ NN\_H}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ NN\_H}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <Eigen/Dense>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{activation_8hh}{activation.hh}}"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ ROW\_SEPARATOR\ \ \ \ \ \ "{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ MATRIX\_SEPARATOR\ \ \ "{}END-\/MATRIX"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ TOPOLOGY\_SEPARATOR\ "{}TOPOLOGY"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ COLUMN\_SEPARATOR\ \ \ "{},"{}}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{using\ namespace\ }Eigen;}
+\DoxyCodeLine{00026\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classAndresNeuralNetwork}{AndresNeuralNetwork}}}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ vector<int>\ \ \ \ \ \ \ \ \ topology;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ vector<MatrixXd>\ \ \ \ weights;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ vector<MatrixXd>\ \ \ \ prev\_weight\_update;\ \ }
+\DoxyCodeLine{00037\ \ \ vector<VectorXd>\ \ \ \ biases;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ vector<VectorXd>\ \ \ \ activations;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ vector<VectorXd>\ \ \ \ deltas;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ \ \ \ learning\_rate;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ \ \ \ \ momentum;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{classActivationFunction}{ActivationFunction}}\ *activation\_function;\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00052\ \ \ \mbox{\hyperlink{classAndresNeuralNetwork_a10b0e904c5321fd1ef38cf8df0890e2c}{AndresNeuralNetwork}}(\textcolor{keyword}{const}\ vector<int>\ \&topology,\ \textcolor{keywordtype}{double}\ learning\_rate,\ \textcolor{keywordtype}{double}\ momentum,\ \mbox{\hyperlink{classActivationFunction}{ActivationFunction}}\ *activation\_function);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAndresNeuralNetwork_a911e592528482d3a80b6a3b7c9d2cb86}{backpropagation}}(\textcolor{keyword}{const}\ VectorXd\ \&target);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAndresNeuralNetwork_a060ccf2916b573030894f89e6ce815a1}{forwardPropagation}}(\textcolor{keyword}{const}\ VectorXd\ \&input,\ std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{string})>\ log\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00072\ \ \ Eigen::VectorXd\ \mbox{\hyperlink{classAndresNeuralNetwork_a73579061c0f80b0d19ba77f703e25e1f}{getResults}}(std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{string})>\ log\ =\ \textcolor{keyword}{nullptr})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classAndresNeuralNetwork_adbabc8815588f95a6fecb6f493e45855}{loadWeights}}(\textcolor{keyword}{const}\ std::string\ \&filename);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00085\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAndresNeuralNetwork_abf08ac3d4b569b92393f8d4c60b9dc0a}{saveWeights}}(\textcolor{keyword}{const}\ std::string\ \&filename)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAndresNeuralNetwork_a844e9ba9e6aecdebdf9d05e080fdbd24}{setEta}}(\textcolor{keywordtype}{double}\ eta);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAndresNeuralNetwork_ac1e4045866733310c2fd9a795d66e732}{setAlpha}}(\textcolor{keywordtype}{double}\ alpha);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAndresNeuralNetwork_a4053f773c38cc323b444be25958e85ba}{setTopology}}(\textcolor{keyword}{const}\ vector<int>\ \&newTopology);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00109\ \ \ std::vector<int>\ \mbox{\hyperlink{classAndresNeuralNetwork_ac860a472a79645efc94bc0575792cb09}{getTopology}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00114\ \ \ \mbox{\hyperlink{classAndresNeuralNetwork_a3b49287bad737f674df2619fe12a279d}{\string~AndresNeuralNetwork}}();}
+\DoxyCodeLine{00115\ \};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ NN\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

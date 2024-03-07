@@ -1,0 +1,94 @@
+\doxysection{Activation\+Function Class Reference}
+\hypertarget{classActivationFunction}{}\label{classActivationFunction}\index{ActivationFunction@{ActivationFunction}}
+
+
+Base class for activation functions.  
+
+
+
+
+{\ttfamily \#include $<$activation.\+hh$>$}
+
+Inheritance diagram for Activation\+Function\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classActivationFunction}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual Vector\+Xd \mbox{\hyperlink{classActivationFunction_a1d6f7f4cfe61e3d057de380e379e13dc}{activate}} (const Vector\+Xd \&x) const =0
+\begin{DoxyCompactList}\small\item\em Activate function. \end{DoxyCompactList}\item 
+virtual Vector\+Xd \mbox{\hyperlink{classActivationFunction_a956c45421ed29a4e872b163124c9f2dd}{derivative}} (const Vector\+Xd \&x) const =0
+\begin{DoxyCompactList}\small\item\em Calculate derivative of activation function. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classActivationFunction_a09ce28c4d8ab4a220e911b88911f5888}{\texorpdfstring{$\sim$}{\string~}\+Activation\+Function}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for activation functions. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classActivationFunction_a09ce28c4d8ab4a220e911b88911f5888}\label{classActivationFunction_a09ce28c4d8ab4a220e911b88911f5888} 
+\index{ActivationFunction@{ActivationFunction}!````~ActivationFunction@{\texorpdfstring{$\sim$}{\string~}ActivationFunction}}
+\index{````~ActivationFunction@{\texorpdfstring{$\sim$}{\string~}ActivationFunction}!ActivationFunction@{ActivationFunction}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ActivationFunction()}{\string~ActivationFunction()}}
+{\footnotesize\ttfamily virtual Activation\+Function\+::\texorpdfstring{$\sim$}{\string~}\+Activation\+Function (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classActivationFunction_a1d6f7f4cfe61e3d057de380e379e13dc}\label{classActivationFunction_a1d6f7f4cfe61e3d057de380e379e13dc} 
+\index{ActivationFunction@{ActivationFunction}!activate@{activate}}
+\index{activate@{activate}!ActivationFunction@{ActivationFunction}}
+\doxysubsubsection{\texorpdfstring{activate()}{activate()}}
+{\footnotesize\ttfamily virtual Vector\+Xd Activation\+Function\+::activate (\begin{DoxyParamCaption}\item[{const Vector\+Xd \&}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Activate function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector after activation. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSigmoidActivation_a41ad34864d06a19bb762bf1409599fd4}{Sigmoid\+Activation}}, and \mbox{\hyperlink{classReLUActivation_a916405cd1ee7369ae0e4e33cc19585a7}{Re\+LUActivation}}.
+
+\Hypertarget{classActivationFunction_a956c45421ed29a4e872b163124c9f2dd}\label{classActivationFunction_a956c45421ed29a4e872b163124c9f2dd} 
+\index{ActivationFunction@{ActivationFunction}!derivative@{derivative}}
+\index{derivative@{derivative}!ActivationFunction@{ActivationFunction}}
+\doxysubsubsection{\texorpdfstring{derivative()}{derivative()}}
+{\footnotesize\ttfamily virtual Vector\+Xd Activation\+Function\+::derivative (\begin{DoxyParamCaption}\item[{const Vector\+Xd \&}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Calculate derivative of activation function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Input vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of derivatives. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSigmoidActivation_a73fcfe8957a8da6be84d79f17ad13902}{Sigmoid\+Activation}}, and \mbox{\hyperlink{classReLUActivation_a6a15458dffcb9c83ba11449fe0da4715}{Re\+LUActivation}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/andres.\+coronado/\+Documents/git/wx\+App/lib/nn\+\_\+eigen/inc/\mbox{\hyperlink{activation_8hh}{activation.\+hh}}\end{DoxyCompactItemize}

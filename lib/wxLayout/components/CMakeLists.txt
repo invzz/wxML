@@ -4,9 +4,9 @@ include_directories(
     ${wxWidgets_INCLUDE_DIRS}
 )
 # Source files
-set(SRC ${LIB_NAME}.cc  appleListControl.cc )
+set(SRC ${LIB_NAME}.cc   appleListControl.cc )
 # Header files
-set(INC ${LIB_NAME}.hh appleData.hh csvListControl.hh )
+set(INC ${LIB_NAME}.hh macros.hh DataModel.hh csvListControl.hh )
 # Executable 
 add_library(${LIB_NAME} ${SRC} ${INC}) 
 
