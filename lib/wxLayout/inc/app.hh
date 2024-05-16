@@ -1,7 +1,7 @@
 #ifndef _H_LAYOUT_EX_H_
 #define _H_LAYOUT_EX_H_
 #include <wx/wx.h>
-#include "mainframe.hh"
+#include "main_frame.hh"
 
 class MyApp : public wxApp
 {
